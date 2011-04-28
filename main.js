@@ -19,10 +19,22 @@ db.addPage(
     "jbennett",
     //TODO this should be passed the unique hash, based on, ip or host name, and hashed password (stored in session or cookie)?
     "index", 
-    '<html><head>{title}</head><body><h1>{title}</h1><p>{description}</p></body></html>',
+    '<html><head>{title}</head><body><h1>{title}</h1><p>{description}</p><ul>{for page in pages}<li><a href="{page.url}">{page.title}</a></li>{/for}</ul></body></html>',
     {
         title: "Hello World!",
-        description: "This is a test of the muemen system.",
+        description: "This is a test of the muemen system."
+    }
+);
+
+db.addPage(
+    "jbennett",
+    //TODO this should be passed the unique hash, based on, ip or host name, and hashed password (stored in session or cookie)?
+    "subpage", 
+    
+    '<html><head>{title}</head><body><h1>{title}</h1><p>{description}</p><ul>{for page in pages}<li><a href="{page.url}">{page.title}</a></li>{/for}</ul></body></html>',
+    {
+        title: "A really awesome sub page",
+        description: "This is how a sub page looks.<br /> although it's not really a sub page, since it's uber aweesoeme!"
     }
 );
 
