@@ -25,8 +25,6 @@ db.addPage(
     }
 );
 
-db.dumpUser("jbennett");
-
 function loadUser(req, res, next) {
   // You would fetch your user from the db
   var user = req.params.user;
@@ -44,7 +42,7 @@ function loadUser(req, res, next) {
   }
 }
 
-app.get('/pages/:user/:page', loadUser, function(req, res){
+app.get('/:user/:page', loadUser, function(req, res){
   res.send(req.generatedPage);
 });
 
