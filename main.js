@@ -5,7 +5,7 @@ function getClientAddress(req) {
   return req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 }
 
-//Add DUMMY USER
+//-----DUMMY DATA
 db.addUser({
         userName: "jbennett",
         password: "testing1",
@@ -18,12 +18,13 @@ db.addPage(
     "jbennett",
     //TODO this should be passed the unique hash, based on, ip or host name, and hashed password (stored in session or cookie)?
     "index", 
-    '<html><head>{title}</head><body><h1>{title}</h1></body></html>',
+    '<html><head>{title}</head><body><h1>{title}</h1><p></p></body></html>',
     {
         title: "Hello World!",
         description: "This is a test of the muemen system."
     }
 );
+//-----END OF DUMMY DATA
 
 function loadUser(req, res, next) {
   // You would fetch your user from the db
