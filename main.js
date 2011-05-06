@@ -2,6 +2,8 @@
 //TODO add ability to sup page another page. injeced into the "master" pages context right before it's displayed maybe.
 //TODO Add the ability for page to be hidden from display but used as template
 //TODO Add ability for multiple "sites"
+//TODO add landing page.
+//TODO add admin pages.
 
 process.title = "muemenApplication";
 
@@ -9,9 +11,18 @@ var app = require('express').createServer();
 var db = require('./lib/muemenDB.js');
 var whiskers = require('whiskers');
 
-/*function getClientAddress(req) {
-  return req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-}*/
+app.register('.html', require('ejs'));
+app.set('views', __dirname + '/public/views');
+app.set('view engine', 'html');
+
+app.configure('development', function(){
+    app.use(express.static(__dirname + '/public/includes'));
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
+
+//app.use(express.cookieParser());
+//app.use(express.session({ secret: "20111001_j_b_2" }));
 
 //-----DUMMY DATA
 
@@ -58,7 +69,11 @@ db.addPage(
 
 //-----END OF DUMMY DATA
 
-function loadUser(req, res, next) {
+/*function getClientAddress(req) {
+  return req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+}*/
+
+function loadUserPage(req, res, next) {
   // You would fetch your user from the db
   var user = req.params.user;
   var page = req.params.page || "index";
@@ -75,12 +90,28 @@ function loadUser(req, res, next) {
   }
 }
 
-app.get('/:user/:page', loadUser, function(req, res){
+//USER SITE AREA
+app.get('/sites/:page', loadUserPage, function(req, res){
   res.send( whiskers.render(req.output.markup, req.output.context) );
 });
 
-app.get('/:user', loadUser, function(req, res){
+app.get('/sites/:user/:page', loadUserPage, function(req, res){
+  res.send( whiskers.render(req.output.markup, req.output.context) );
+});
+
+app.get('/sites/:user', loadUserPage, function(req, res){
   res.send(req.generatedPage);
 });
 
+//SITE PAGES
+app.get('/:page', function(req, res){
+  res.render(req.params.page, { users: users });
+});
+
+//HOME PAGE
+app.get('/', function(req, res){
+  res.render('index', { users: users });
+});
+
+//LISTEN ON PORT
 app.listen(process.env.C9_PORT);

@@ -1,0 +1,7 @@
+html{background:url('../images/tblock.svg'); text-align:left; font-family: 'PT Sans', arial, serif;}
+body{background:#fffeee};
+h1, h2, h3, h4, h5{ font-weight:bold; }
+h1{font-size:3.23em}
+h2{font-size:1.61em}
+h3,h4,h5{font-size:1.2em}
+p{margin:1.61em 0 1.61em 0}
