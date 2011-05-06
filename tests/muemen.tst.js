@@ -6,7 +6,9 @@
 var ejs = require('../lib/muemenDB');
 
 module.exports = {
-  'test user has been added correctly': function(assert){
-    assert.equal(html, str);
-  },
+    'Blank Test': function(assert){
+        var html = "";
+        var str = "";
+        assert.equal(html, str);
+    }
 };
