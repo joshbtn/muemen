@@ -3,4 +3,4 @@ Muemen aims to be a simple system for makeing post, adding pages and quickly upd
 
 ## License
 
-View the [LICENSE](https://github.com/joshatjben/muemen/blob/master/LICENSE) file.
+View the [LICENSE](https://github.com/joshatjben/muemen/blob/git pusmaster/LICENSE) file.
