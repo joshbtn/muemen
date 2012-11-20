@@ -1,5 +1,5 @@
 # meumen
-Muemen aims to be a simple system for makeing post, adding pages and quickly updating templates. Muemen uses [node](http://nodejs.org), [expressjs](https://github.com/visionmedia/express), and [wiskers](https://github.com/gsf/whiskers.js).
+Muemen aims to be a simple system for making post, adding pages and quickly updating templates. Muemen uses [node](http://nodejs.org), [expressjs](https://github.com/visionmedia/express), and [wiskers](https://github.com/gsf/whiskers.js).
 
 ## License
 
